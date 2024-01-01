@@ -1,0 +1,24 @@
+{
+  "name": "cypress-xpheno",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run",
+  "cy:open": "cypress open",
+  "cy:parallel": "cypress-parallel"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.2",
+    "cypress-mochawesome-reporter": "^3.7.0",
+    "cypress-xpath": "^2.0.1",
+    "faker": "^5.5.3"
+  },
+  "dependencies": {
+    "cypress-parallel": "^0.14.0"
+  }
+}
