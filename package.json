@@ -23,5 +23,4 @@
   "dependencies": {
     "cypress-parallel": "^0.14.0"
   }
-  
 }

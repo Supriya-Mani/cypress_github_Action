@@ -28,11 +28,11 @@ inlineAssets: true, //Adds the asserts inline
   defaultCommandTimeout: 10000,
   execTimeout: 60000,
   uncaughtExceptionCaptureLevel: "off",
-    "record": true,
-    "key": "<>",
-    "num": 4,
-    "spec": "cypress/Integration/Examples/*.js",
-    "execTimeout": 600
+  
+    "video": true,
+    "videoTimeout": 60000, // Set a higher value in milliseconds
+    "videosFolder": "cypress/videos"
+  
   
   
 });
