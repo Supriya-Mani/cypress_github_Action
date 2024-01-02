@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 
 module.exports = defineConfig({
-  projectId:"gaij8z",
+  projectId: "o2cj6s",
 
   viewportWidth: 2000,
   viewportHeight: 900,
@@ -29,7 +29,7 @@ inlineAssets: true, //Adds the asserts inline
   execTimeout: 60000,
   uncaughtExceptionCaptureLevel: "off",
     "record": true,
-    "key": "<f1456bb5-f22a-49a6-8aa6-05420c469969>",
+    "key": "<>",
     "num": 4,
     "spec": "cypress/Integration/Examples/*.js",
     "execTimeout": 600
