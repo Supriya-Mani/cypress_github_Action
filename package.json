@@ -7,8 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm start",
     "cy:run": "cypress run",
-  "cy:open": "cypress open",
-  "cy:parallel": "cypress-parallel"
+    "cy:open": "cypress open",
+    "cy:parallel": "cypress run --parallel --record",
+    "cypress-parallel": "npm run cy:parallel"
   },
   "keywords": [],
   "author": "",
@@ -22,4 +23,5 @@
   "dependencies": {
     "cypress-parallel": "^0.14.0"
   }
+  
 }
