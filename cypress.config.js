@@ -21,7 +21,7 @@ inlineAssets: true, //Adds the asserts inline
       // implement node event listeners here
     require('cypress-mochawesome-reporter/plugin')(on);
     },
-    specPattern: 'Cypress/Integration/Examples/*.js'
+    specPattern: 'cypress/Integration/Examples/*.js'
     
   },
   chromeWebSecurity: false,
