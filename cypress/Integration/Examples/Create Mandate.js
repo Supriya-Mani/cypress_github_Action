@@ -4,7 +4,7 @@
 
 describe('Validating create mandare functionality',function(){
     it("Testing create new mandate ",async function(){
-      cy.viewport(1280 , 593)
+      
 
 cy.visit("https://web.qa.xpheno.work/login",{failOnStatusCode: false, }) 
     //Enter the username in login screen
