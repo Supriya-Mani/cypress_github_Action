@@ -8,8 +8,12 @@
     "start": "echo 'Starting server' && npm-run-all --parallel start-server",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "cy:parallel": "cypress run --parallel --record",
-    "cypress-parallel": "npm run cy:parallel"
+    "test:chrome": "npx cypress run --browser chrome",
+ "test:firefox": "npx cypress run --browser firefox",
+ "test:edge": "npx cypress run --browser edge"
+
+    
+  
   },
   "keywords": [],
   "author": "",
