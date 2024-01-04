@@ -8,7 +8,7 @@
     "start": "echo 'Starting server' && npm-run-all --parallel start-server",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test:chrome": "npx cypress run --browser chrome",
+    "test:chrome": "npx cypress run --browser chrome --headed",
  "test:firefox": "npx cypress run --browser firefox",
  "test:edge": "npx cypress run --browser edge"
 
