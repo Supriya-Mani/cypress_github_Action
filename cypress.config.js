@@ -2,7 +2,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  projectId: process.env.CYPRESS_PROJECT_ID || "5cxjww",
+  projectId: process.env.CYPRESS_PROJECT_ID || "bcmpwq",
   video: true,
   viewportWidth: 2000,
   viewportHeight: 900,
