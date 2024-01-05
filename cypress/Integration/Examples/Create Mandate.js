@@ -2,7 +2,7 @@
 ///<reference types="cypress"/>
 
 
-describe('Validating create mandare functionality',function(){
+describe('Validating create mandate functionality',function(){
     it("Testing create new mandate ",async function(){
       
 
@@ -291,38 +291,36 @@ cy.wait(500)
   cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[2]/div[1]/div/div/textarea[1]')
   .click({force:true}).type(randomQualification,{force:true})
 
-  //click on experience year startvalue and endvalye
+  //click on experience year startvalue and endvalue
  /* const minStartValue = 0;
     const maxStartValue = 30;
     const minEndValue = 0;
-    const maxEndValue = 25;
+    const maxEndValue = 30;
 
     // Get random start and end values within the specified ranges
     const startValue = faker.random.number({ min: minStartValue, max: maxStartValue });
     const endValue = faker.random.number({ min: minEndValue, max: maxEndValue });
 
     // Interaction with the first slider
-    cy.get(':nth-child(1) > .mandate-slider > .select-container > :nth-child(1) > .MuiInputBase-root > .MuiSelect-select')
-      .should('be.visible')
+    cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[1]/div/div/div[1]/div/div/div/div/button[2]/span')
       .click({ force: true, position: 'bottom' })
       .then(() => {
-        cy.contains(endValue).click({ force: true });
+        cy.contains(startValue).click({force:true}).type('{esc}');
         
       })
       
     // Interaction with the second slider
-    cy.get(':nth-child(1) > .mandate-slider > .select-container > :nth-child(2) > .MuiInputBase-root > .MuiSelect-select')
-      .should('be.visible')
+    cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[1]/div/div/div[2]/div/div/div/div/button[2]/span')
       .click({ force: true, position: 'bottom' })
       .then(() => {
-        cy.contains(endValue).click({ force: true });
-        cy.get('body').click({force:true});
-      })
+        cy.contains(endValue).click({ force: true })
+        .type('{esc}',{force:true})
+      })*/
       
     
   
  //click on Annual CTC
- const startCTC= faker.random.number({ min: 0, max: 100 });
+ /*const startCTC= faker.random.number({ min: 0, max: 100 });
   const endCTC = faker.random.number({ min: startCTC, max: 100 });
   
   cy.get(':nth-child(2) > .mandate-slider > .select-container > :nth-child(1) > .MuiInputBase-root > .MuiSelect-select')

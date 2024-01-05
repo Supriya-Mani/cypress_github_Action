@@ -3,6 +3,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   projectId: "o2cj6s",
+  video:true,
+  baseUrl: 'http://localhost:3000',
 
   viewportWidth: 2000,
   viewportHeight: 900,
@@ -29,7 +31,7 @@ inlineAssets: true, //Adds the asserts inline
   execTimeout: 60000,
   uncaughtExceptionCaptureLevel: "off",
   
-    "video": true,
+  
     "videoTimeout": 60000, // Set a higher value in milliseconds
     "videosFolder": "cypress/videos"
   
