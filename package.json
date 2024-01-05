@@ -9,6 +9,10 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "build": "npm run cy:run",
+    "test:chrome": "npx cypress run --browser chrome --headed",
+    "test:firefox": "npx cypress run --browser firefox",
+    "test:edge": "npx cypress run --browser edge",
+  
     "ci:parallel": "cypress-parallel",
     "ci:chrome": "npm run ci:parallel -- -s 'ci:run --browser chrome --record'",
     "ci:firefox": "npm run ci:parallel -- -s 'ci:run --browser firefox --record'",
@@ -26,6 +30,6 @@
     "npm-run-all": "^4.1.5"
   },
   "dependencies": {
-    "14": "^1.0.1"
+    "14": "^3.1.6"
   }
 }
