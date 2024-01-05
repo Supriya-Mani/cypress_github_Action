@@ -9,8 +9,12 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test:chrome": "npx cypress run --browser chrome --headed",
- "test:firefox": "npx cypress run --browser firefox",
- "test:edge": "npx cypress run --browser edge"
+    "test:firefox": "npx cypress run --browser firefox",
+    "test:edge": "npx cypress run --browser edge",
+    "build": "npm run cy:run",
+    "ci:chrome": "npm run build -- --browser chrome --record",
+    "ci:firefox": "npm run build -- --browser firefox --record",
+    "ci:edge": "npm run build -- --browser edge --record"
 
     
   

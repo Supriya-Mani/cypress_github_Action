@@ -4,7 +4,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   projectId: "o2cj6s",
   video:true,
-
+  
 
   viewportWidth: 2000,
   viewportHeight: 900,
@@ -19,7 +19,6 @@ embeddedScreenshots: true,
 inlineAssets: true, //Adds the asserts inline
  },
   e2e: {
-    baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     require('cypress-mochawesome-reporter/plugin')(on);
