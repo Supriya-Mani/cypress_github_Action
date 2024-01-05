@@ -1,40 +1,32 @@
+
 const { defineConfig } = require("cypress");
 
-
 module.exports = defineConfig({
-  projectId: "5cxjww",
-  video:true,
-  
-
+  projectId: process.env.CYPRESS_PROJECT_ID || "5cxjww",
+  video: true,
   viewportWidth: 2000,
   viewportHeight: 900,
-  reporter: 'cypress-mochawesome-reporter',//for html report
-  video: true,
- reporterOptions: {
-charts: true,
-reportPageTitle: 'Cypress Inline Reporter',
-
-embeddedScreenshots: true,
-
-inlineAssets: true, //Adds the asserts inline
- },
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    require('cypress-mochawesome-reporter/plugin')(on);
-    },
-    specPattern: 'cypress/Integration/Examples/*.js'
-    
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'Cypress Inline Reporter',
+    embeddedScreenshots: true,
+    inlineAssets: true,
   },
   chromeWebSecurity: false,
   defaultCommandTimeout: 10000,
   execTimeout: 60000,
   uncaughtExceptionCaptureLevel: "off",
-  
-  
-    "videoTimeout": 60000, // Set a higher value in milliseconds
-    "videosFolder": "cypress/videos"
-  
-  
-  
+  videoTimeout: 60000,
+  videosFolder: "cypress/videos",
+  env: {
+    // Set environment variables as needed
+  },
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+      require('cypress-mochawesome-reporter/plugin')(on);
+    },
+    specPattern: 'cypress/Integration/Examples/*.js'
+  }
 });
