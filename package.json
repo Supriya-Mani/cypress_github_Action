@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx cypress run --record -parallel --key 59c79433-e21b-4482-ac49-c693cbce07ec ",
     "start": "echo 'Starting server' && npm-run-all --parallel start-server",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
