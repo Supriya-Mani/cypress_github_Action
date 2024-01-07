@@ -64,7 +64,7 @@ jobs:
     needs: install
     strategy:
       matrix:
-        file: [ cypress\Integration\Examples\Create Mandate.js]
+        file: [ 'cypress/Integration/Examples/Create Mandate.js','cypress/Integration/Examples/Create Mandate.js','cypress/Integration/Examples/Create Mandate.js' ]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -98,7 +98,7 @@ jobs:
       - name: Cypress tests
         run: |
           npm start &
-          npx cypress run --record --parallel --group "Parallel 2x" --spec "${{ 'cypress\Integration\Examples\Create Mandate.js'}}"
+          npx cypress run --record --parallel --group "Parallel 2x" --spec "${{ 'cypress/Integration/Examples/Create Mandate.js'}}"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           TERM: xterm
