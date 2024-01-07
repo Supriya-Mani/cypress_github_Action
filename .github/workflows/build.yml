@@ -65,7 +65,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        file: [ 'cypress/Integration/Examples/Create Mandate.js']
+        file: [ 'cypress/Integration/Examples/*.js']
         Container: [1, 2, 3, 4]
         
     steps:
@@ -101,7 +101,7 @@ jobs:
       - name: Cypress tests
         run: |
           npm start &
-          npx cypress run --record --parallel --group "Parallel 2x" --spec "${{ 'cypress/Integration/Examples/Create Mandate.js'}}"--ci-build-id "${{ 'cypress/Integration/Examples/Create Mandate.js' }}"
+          npx cypress run --record --parallel --group "Parallel 2x" --spec "${{ 'cypress/Integration/Examples/*.js'}}"--ci-build-id "${{ 'cypress/Integration/Examples/*.js' }}"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           TERM: xterm
