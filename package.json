@@ -13,6 +13,7 @@
     "test:firefox": "npx cypress run --browser firefox",
     "test:edge": "npx cypress run --browser edge"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
