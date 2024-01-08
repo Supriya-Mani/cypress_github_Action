@@ -101,7 +101,7 @@ jobs:
       - name: Cypress tests
         run: |
           npm start &
-          npx cypress run --record --parallel --group "Parallel 4x" --spec "${{ 'cypress/Integration/Examples/*.js'}}"--ci-build-id "${{ 'cypress/Integration/Examples/*.js' }}" --browser --firefox --headed
+          npx cypress run --record --parallel --group "Parallel 4x" --spec "${{ 'cypress/Integration/Examples/*.js'}}"--ci-build-id "${{ 'cypress/Integration/Examples/*.js' }}" --browser firefox
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           TERM: xterm
