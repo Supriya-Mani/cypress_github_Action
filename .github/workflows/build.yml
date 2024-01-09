@@ -28,6 +28,8 @@ jobs:
           parallel: true
           # screenshot: true  
           group: XpehnoAutomation
+          spec: "cypress/Integration/Examples/*.js" # Update this path
+          ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
         env:
           # pass the Cypress Cloud record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
