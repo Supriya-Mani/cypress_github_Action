@@ -47,7 +47,7 @@ jobs:
           start: npm start
         env:
           # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ 'secrets.dashboardRecordKey' }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
   parallel-runs-across-platforms:
     name: every OS
@@ -75,12 +75,12 @@ jobs:
         with:
           record: true
           parallel: true
-          group: Parallel 2x on ${{ matrix.os }}
+          group: Parallel 2x on ${{ 'cypress/Integration/Examples/Create Mandate.js'}}
           # on Mac and Linux we can use "npm start"
           start: npm start
           # but for this particular project on Windows we need a different start command
           start-windows: npm run start
         env:
           # pass the Cypress Cloud (dashboard) record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ 'secrets.dashboardRecordKey' }}
+          CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
 
