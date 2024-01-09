@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx cypress run --record -parallel --key 59c79433-e21b-4482-ac49-c693cbce07ec ",
     "start": "echo 'Starting server' && npm-run-all --parallel start-server",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --spec cypress/Integration/Examples/Create Mandate.js",
     "cy:open": "cypress open",
     "build": "npm run cy:run",
     "test:chrome": "npx cypress run --browser chrome --headed",
