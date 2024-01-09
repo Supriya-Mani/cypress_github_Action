@@ -65,7 +65,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        file: [ 'cypress/Integration/Examples/*.js']
+        file: [ 'cypress/Integration/Examples/Create Mandate.js']
         Container: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
         
     steps:
@@ -101,7 +101,9 @@ jobs:
       - name: Cypress tests
         run: |
           npm start &
-          npx cypress run --record --parallel --group "Parallel 50x" --spec "${{ 'cypress/Integration/Examples/*.js'}}" --ci-build-id "${{ 'cypress/Integration/Examples/*.js' }}" --browser chrome
+          for i in {1..50}; do
+          npx cypress run --record --spec "${{'cypress/Integration/Examples/Create Mandate.js' }}" --ci-build-id "${{'cypress/Integration/Examples/Create Mandate.js' }}-${i}" --browser chrome
+        
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           TERM: xterm
