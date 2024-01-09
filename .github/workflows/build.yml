@@ -1,35 +1,38 @@
 name: Parallel Cypress Tests
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   test:
+    name: Cypress Cloud Tests
     runs-on: ubuntu-latest
-
     strategy:
+      # when one test fails, DO NOT cancel the other
+      # containers, because this will kill Cypress processes
+      # leaving Cypress Cloud hanging ...
+      # https://github.com/cypress-io/github-action/issues/48
+      fail-fast: false
       matrix:
-        machine: [1, 2, 3, 4, 5] # Number of machines
-
+        # run 2 copies of the current job in parallel
+        containers: [1,2,3,4,5]
+        repeat: [1,2,3,4,5,6,7,8,9,10]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      # because of "record" and "parallel" parameters
+      # these containers will load balance all found tests among themselves
+      - name: Parallel Tests
+        uses: cypress-io/github-action@v4
         with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Cypress tests
-        run: npm run cypress:run
-
+          record: true
+          parallel: true
+          # screenshot: true  
+          group: XpehnoAutomation
+          spec: "cypress/Integration/Examples/Create Mandate.js" # Update this path
+          ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
         env:
-          CYPRESS_RETRIES: ${{ matrix.machine }}
-          CYPRESS_GROUP: ${{ matrix.machine }}
+          # pass the Cypress Cloud record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass the GitHub token lets this action correctly
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

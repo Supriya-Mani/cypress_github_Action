@@ -1,3 +1,4 @@
+
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -21,7 +22,6 @@ module.exports = defineConfig({
   env: {
     // Set environment variables as needed
   },
-  retries: 49, // Add the retries configuration here
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
