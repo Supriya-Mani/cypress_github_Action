@@ -11,7 +11,8 @@
     "build": "npm run cy:run",
     "test:chrome": "npx cypress run --browser chrome --headed",
     "test:firefox": "npx cypress run --browser firefox",
-    "test:edge": "npx cypress run --browser edge"
+    "test:edge": "npx cypress run --browser edge",
+    "start-server": "npm-run-all --parallel start-server"
   },
 
   "keywords": [],
