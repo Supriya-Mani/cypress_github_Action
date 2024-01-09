@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --record -parallel --key 59c79433-e21b-4482-ac49-c693cbce07ec ",
+    "test": "npx cypress-repeat run -n 5 --record -parallel --key 59c79433-e21b-4482-ac49-c693cbce07ec ",
     "start": "echo 'Starting server' && npm-run-all --parallel start-server",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
@@ -14,7 +14,6 @@
     "test:edge": "npx cypress run --browser edge",
     "start-server": "npm-run-all --parallel start-server"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -22,9 +21,9 @@
     "cypress": "^13.6.2",
     "cypress-mochawesome-reporter": "^3.7.0",
     "cypress-parallel": "^0.14.0",
+    "cypress-repeat": "^2.3.4",
     "cypress-xpath": "^2.0.1",
     "faker": "^5.5.3",
     "npm-run-all": "^4.1.5"
   }
-  
 }
