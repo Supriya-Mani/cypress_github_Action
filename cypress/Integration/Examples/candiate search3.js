@@ -19,7 +19,7 @@ cy.visit("https://web.staging.xpheno.work/login",{failOnStatusCode: false, })
    cy.contains('Candidate Search').click({force:true})
    //click search query
    cy.xpath('/html/body/div[1]/div[4]/div/main/div/div/div[1]/div[1]/form/div/div/div/div/div/input').click({force:true})
-   .type("a")
+   .type("m")
    //click on search
    cy.xpath('/html/body/div[1]/div[4]/div/main/div/div/div[1]/div[1]/form/div[2]/button[1]').click({force:true})
 
