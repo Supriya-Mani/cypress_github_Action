@@ -13,7 +13,6 @@
     "test:firefox": "npx cypress run --browser firefox",
     "test:edge": "npx cypress run --browser edge"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -21,9 +20,9 @@
     "cypress": "^13.6.2",
     "cypress-mochawesome-reporter": "^3.7.0",
     "cypress-parallel": "^0.14.0",
+    "cypress-snapshot": "^0.0.2-development1",
     "cypress-xpath": "^2.0.1",
     "faker": "^5.5.3",
     "npm-run-all": "^4.1.5"
   }
-  
 }

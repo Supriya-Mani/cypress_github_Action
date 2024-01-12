@@ -8,7 +8,7 @@ describe('Validating create mandate functionality',function(){
 
 cy.visit("https://web.qa.xpheno.work/login",{failOnStatusCode: false, }) 
     //Enter the username in login screen
-    cy.get('input[id=":r0\:"]').type('pandiselvam.ramamoorthi@impigertech.com')
+    cy.get('input[id=":r0\:"]').type('naveenkumar.magesh@impigertech.com')
     //Enter the Password in loging
   cy.get('input[id=":r1:"]').type('impiger#123')
   //click on submit button
@@ -503,6 +503,7 @@ cy.contains('Attachments').should('be.visible')
 //click on save button
 
 cy.get('.save-btn').click()
+cy.contains('Select Approver').invoke('removeAttr','target').should('be.visible')
 cy.wait(2000)
 //check the success popup
 cy.contains('Success').should('be.visible')

@@ -12,6 +12,8 @@ module.exports = defineConfig({
     reportPageTitle: 'Cypress Inline Reporter',
     embeddedScreenshots: true,
     inlineAssets: true,
+    "screenshotOnRunFailure": true,
+  "screenshotPath": "cypress/screenshots"
   },
   chromeWebSecurity: false,
   defaultCommandTimeout: 10000,
