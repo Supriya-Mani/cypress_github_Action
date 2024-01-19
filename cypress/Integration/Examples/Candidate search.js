@@ -8,7 +8,7 @@ describe('Validating create mandate functionality',function(){
 
 cy.visit("https://web.staging.xpheno.work/login",{failOnStatusCode: false, }) 
     //Enter the username in login screen
-    cy.get('input[id=":r0\:"]').type('naveenkumar.magesh@impigertech.com')
+    cy.get('input[id=":r0\:"]').type('naveenkumar.magesh@impigertech.com',{force:true})
     //Enter the Password in loging
   cy.get('input[id=":r1:"]').type('impiger#123')
   //click on submit button
@@ -22,7 +22,15 @@ cy.visit("https://web.staging.xpheno.work/login",{failOnStatusCode: false, })
    .type("developer")
    //click on search
    cy.xpath('/html/body/div[1]/div[4]/div/main/div/div/div[1]/div[1]/form/div[2]/button[1]').click({force:true})
-    })
+    
+    //Select random data on the candidate search
+    cy.xpath('/html/body/div[1]/div[4]/div/main/div/div/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]').click({force:true})
+  
+    //click on Candidate tracking button 
+    cy.contains('Candidate tracking').click({force:true})
+
+})
+
 
 
     

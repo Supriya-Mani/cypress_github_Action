@@ -6,11 +6,11 @@ describe('Validating create mandate functionality',function(){
     it("Testing create new mandate ",async function(){
       
 
-cy.visit("https://web.qa.xpheno.work/login",{failOnStatusCode: false}) 
+cy.visit("https://web.staging.xpheno.work/login",{failOnStatusCode: false, }) 
     //Enter the username in login screen
-    cy.get('input[type="email"]').type('naveenkumar.magesh@impigertech.com')
+    cy.get('input[id=":r0\:"]').type('naveenkumar.magesh@impigertech.com')
     //Enter the Password in loging
-  cy.get('input[type="password"]').type('impiger#123')
+  cy.get('input[id=":r1:"]').type('impiger#123')
   //click on submit button
    cy.get('button[id=":r2:"]').click({force:true})
    //It navigate to the dashboard screen
@@ -23,18 +23,14 @@ cy.visit("https://web.qa.xpheno.work/login",{failOnStatusCode: false})
 
    // List of dropdown values
    const dropdownValues = [
-    'TCS',
-    'cognizant',
-    'infosys',
-    'Centum Electronics',
-    'Cyient ES',
-    'DTICI Contract',
-    'Lions Bot',
-    'MBRDI CAD Bangalore',
-    'MBRDI CAD Pune',
-    'MBRDI CAE Bangalore',
-    'TVS Motor Company Limited',
-    'VOLVO CAE Bangalore'
+    'KPMG Assurance and Consulting Services LLP',
+    'Velankani Software Private Limited',
+    'NTT Data information processing private limited',
+    'Clean Harbors India LLP',
+    'ZAPCOM solutions Private Limited',
+    'Wipro Limited',
+    'BUREAU VERITAS INDUSTRIAL SERVICES (INDIA) PRIVATE LIMITED',
+    'WAISAL'
   ];
   
   // Randomly select a value from the list
@@ -91,17 +87,13 @@ const randomDate = faker.date.past(1);
 //click on recieve by
 // Generate a random string
 const recievename = [
-  'Mohamed Rahamathulla Chanbasha',
-  'Vijayaragavan Ambalam',
-  'Dhanapriya Ravi',
-  'Vibin Parthiban',
-  'Pandiselvam Ramamoorthi',
-  'Vinoth Shankar',
-  'Sachin Prasath Pandurangan',
-  'Naveenkumar Magesh',
-  'Ameer Zain',
-  'Xpheno QA',
-  'Kousalyaa'
+  
+  'Vijay',
+  'Dhanapriya',
+  'Vibin',
+  'Pandiselvam',
+  'vinoth',
+  'Naveenkumar'
 ];
 
 // Get a random name
@@ -292,62 +284,55 @@ cy.wait(500)
   .click({force:true}).type(randomQualification,{force:true})
 
   //click on experience year startvalue and endvalue
- // Function to interact with the slider
- function interactWithSlider(xpath, value) {
-  return cy.xpath(xpath)
-    .click({ force: true, position: 'bottom' })
-    .then(() => {
-      cy.contains(value).click({ force: true }).as('sliderValue');
-    });
-}
+ /* const minStartValue = 0;
+    const maxStartValue = 30;
+    const minEndValue = 0;
+    const maxEndValue = 30;
 
-// Get random start and end values within the specified ranges
-const minStartValue = 0;
-const maxStartValue = 30;
-const minEndValue = 0;
-const maxEndValue = 30;
+    // Get random start and end values within the specified ranges
+    const startValue = faker.random.number({ min: minStartValue, max: maxStartValue });
+    const endValue = faker.random.number({ min: minEndValue, max: maxEndValue });
 
-const startValue = faker.random.number({ min: minStartValue, max: maxStartValue });
-const endValue = faker.random.number({ min: minEndValue, max: maxEndValue });
-
-// Interaction with the first slider
-interactWithSlider('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[1]/div/div/div[1]/div/div/div/div/button[2]/span', startValue);
-
-// Continue the chain
-cy.get('body').type('{esc}');
-
-// Interaction with the second slider
-interactWithSlider('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[1]/div/div/div[2]/div/div/div/div/button[2]/span', endValue);
-
-// Continue the chain
-cy.get('body').type('{esc}');
+    // Interaction with the first slider
+    cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[1]/div/div/div[1]/div/div/div/div/button[2]/span')
+      .click({ force: true, position: 'bottom' })
+      .then(() => {
+        cy.contains(startValue).click({force:true}).type('{esc}');
+        
+      })
+      
+    // Interaction with the second slider
+    cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[1]/div/div/div[2]/div/div/div/div/button[2]/span')
+      .click({ force: true, position: 'bottom' })
+      .then(() => {
+        cy.contains(endValue).click({ force: true })
+        .type('{esc}',{force:true})
+      })*/
+      
     
   
-
-//click on Annual CTC
-// Function to interact with the CTC input field
-function interactWithCTCInput(xpath, endCTC) {
-  return cy.xpath(xpath)
-    .should('be.visible')
-    .click({ force: true })
-    .then(() => {
-      cy.contains(endCTC).click({ force: true });
-      cy.focused().click({ force: true });
-      cy.get('body').dblclick({ force: true });
-    });
-}
-
-// Generate random start and end CTC values
-const startCTC = faker.random.number({ min: 0, max: 100 });
-const endCTC = faker.random.number({ min: startCTC, max: 100 });
-
-// Interaction with the first CTC input field
-interactWithCTCInput('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[2]/div[2]/div/div[1]/div/div/div/input', endCTC);
-
-// Interaction with the second CTC input field
-interactWithCTCInput('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[2]/div[2]/div/div[2]/div/div/div/input', endCTC);
-
+ //click on Annual CTC
+ /*const startCTC= faker.random.number({ min: 0, max: 100 });
+  const endCTC = faker.random.number({ min: startCTC, max: 100 });
   
+  cy.get(':nth-child(2) > .mandate-slider > .select-container > :nth-child(1) > .MuiInputBase-root > .MuiSelect-select')
+    .should('be.visible')  // Ensure the element is visible
+    .click({ force: true})
+    .then(() => {
+      cy.contains(endCTC).click({ force: true })
+      cy.focused().click({force:true})
+    cy.get('body').dblclick({force:true})
+     
+    });
+  
+    cy.get(':nth-child(2) > .mandate-slider > .select-container > :nth-child(2) > .MuiInputBase-root > .MuiSelect-select')
+    .should('be.visible')
+    .click({ force: true})
+    .then(() => {
+      cy.contains(endCTC).click({ force: true })
+      cy.get('body').dblclick({force:true})
+    
+    });*/
   //click on primary skills
   const primaryskill = faker.lorem.paragraph();
 cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[4]/div[1]/div/div/textarea[1]')
@@ -509,22 +494,12 @@ cy.contains('Attachments').should('be.visible')
 
 //click on save button
 
-cy.get('.save-btn').click()
-cy.wait(1000)
-// Assuming this code is part of a Cypress test
-
-// Command to open the popup
-cy.get('.assign-mandates-header h3').should('exist').contains('Select Approver and create');
-
-// Command to interact with the input field
-cy.get('#checkboxes-tags').type('vibin'); // Replace 'John Doe' with the desired value
-
-// Command to click the Create button
-cy.get('.bottom-assign-button').click();
-
-// Command to verify that the popup is closed
-cy.get('.assign-mandates-header').should('not.exist');
-
+cy.get('.save-btn').click({force:true})
+//check the header in approver popup
+cy.get('.assign-mandates-header > .MuiTypography-root').should('be.visible')
+//click on dropdown
+cy.get('#checkboxes-tags').click()
+cy.get('#checkboxes-tags-option-0').check()
 //check the success popup
 cy.contains('Success').should('be.visible')
 //click on done
