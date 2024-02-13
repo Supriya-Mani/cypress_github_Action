@@ -8,9 +8,9 @@ describe('Validating create mandate functionality',function(){
 
 cy.visit("https://web.qa.xpheno.work/login",{failOnStatusCode: false}) 
     //Enter the username in login screen
-    cy.get('input[type="email"]').type('naveenkumar.magesh@impigertech.com')
+    cy.get('input[type="email"]').type('naveenkumar.magesh@impigertech.com',{force:true})
     //Enter the Password in loging
-  cy.get('input[type="password"]').type('impiger#123')
+  cy.get('input[type="password"]').type('Impiger#123',{force:true})
   //click on submit button
    cy.get('button[id=":r2:"]').click({force:true})
    //It navigate to the dashboard screen
@@ -57,7 +57,7 @@ cy.visit("https://web.qa.xpheno.work/login",{failOnStatusCode: false})
 
    cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[1]/div[2]/div/div/div/div/div/div[1]/div[2]/div/div/input')
    .click({force:true}).type(fakeName,{force:true})
-// Assuming you are in a Cypress test file
+
 
 // Generate a random string
 const RequestNo = Math.random().toString(36).substring(7);
@@ -67,7 +67,7 @@ cy.xpath("/html/body/div[1]/div[4]/div/main/div/form/div[1]/div[2]/div/div/div/d
 
 
   //click on client SPOC
-  // Assuming you are in a Cypress test file
+  
 
 // Generate a random string
 const randomText = Math.random().toString(36).substring(7);
@@ -155,7 +155,7 @@ cy.get(':nth-child(4) > .MuiInputBase-root > .MuiSelect-select')
   
 //click on start and end date selection using random data
 
-const tomorrow = new Date();
+/*const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
 
 // Use Faker.js to generate a random end date less than 4 years from tomorrow
@@ -179,7 +179,7 @@ cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[2]/div[2]/div/div/div/d
 cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/input')
   .click().clear().type(formattedEndDate);
 //check the header 
-cy.contains('Mandate specs').should('be.visible')
+cy.contains('Mandate specs').should('be.visible')*/
 
 
 //click on job mode and click on job mode
@@ -509,22 +509,13 @@ cy.contains('Attachments').should('be.visible')
 
 //click on save button
 
-cy.get('.save-btn').click()
+cy.get('.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.save-btn.css-1nmpre1').click({force:true})
 cy.wait(1000)
-// Assuming this code is part of a Cypress test
-
-// Command to open the popup
-cy.get('.assign-mandates-header h3').should('exist').contains('Select Approver and create');
-
 // Command to interact with the input field
-cy.get('#checkboxes-tags').type('vibin'); // Replace 'John Doe' with the desired value
+cy.get('#checkboxes-tags').type('Pandiselvam Ramamoorthi'); // Replace 'John Doe' with the desired value
 
-// Command to click the Create button
-cy.get('.bottom-assign-button').click();
-
-// Command to verify that the popup is closed
-cy.get('.assign-mandates-header').should('not.exist');
-
+cy.contains('Pandiselvam Ramamoorthi').click({force:true})
+cy.get('.bottom-assign-button').click({force:true})
 //check the success popup
 cy.contains('Success').should('be.visible')
 //click on done

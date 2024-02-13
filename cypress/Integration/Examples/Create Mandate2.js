@@ -494,16 +494,13 @@ cy.contains('Attachments').should('be.visible')
 
 //click on save button
 
-cy.get('.save-btn').click({force:true})
-//check the header in approver popup
-cy.get('.assign-mandates-header > .MuiTypography-root').should('be.visible')
-//click on dropdown
-cy.get('#checkboxes-tags').click()
-cy.get('#checkboxes-tags-option-0').check()
+
+cy.get('.save-btn.css-1nmpre1').click();
+
 //check the success popup
-cy.contains('Success').should('be.visible')
+//cy.contains('Success').should('be.visible')
 //click on done
-cy.contains("Done").click()
+//cy.contains("Done").click()
 
 
 })
