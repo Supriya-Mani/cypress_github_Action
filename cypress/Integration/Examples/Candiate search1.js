@@ -20,11 +20,12 @@ cy.visit("https://artemis.xpheno.work/login",{failOnStatusCode: false, })
    // Click search query input field
    cy.xpath('/html/body/div[1]/div[4]/div/main/div/div/div[1]/div[1]/form/div/div/div/div/div/input')
    .click({ force: true })
-   .type(generateRandomKeyword(), { delay: 100 });
+   .type(generateRandomKeyword(), { delay: 100 })
+   .type('{backspace}')
  
  // Function to generate a random keyword
  function generateRandomKeyword() {
-   const keywords = ['java', 'Testing', 'node', 'selenium'];
+   const keywords = ['java ', 'Testing ', 'node ', 'selenium  '];
    const randomIndex = Math.floor(Math.random() * keywords.length);
    return keywords[randomIndex];
  }
