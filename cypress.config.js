@@ -22,6 +22,7 @@ module.exports = defineConfig({
   videoTimeout: 60000,
   videosFolder: "cypress/videos",
   env: {
+
     // Set environment variables as needed
   },
   e2e: {

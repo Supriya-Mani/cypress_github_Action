@@ -29,10 +29,11 @@ jobs:
           parallel: true
           # screenshot: true  
           group: XpehnoAutomation
-          spec: "cypress/Integration/Examples/Candidate search.js" # Update this path
+          spec: "cypress/Integration/Examples/Candidate search1.js" # Update this path
           ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
         env:
           # pass the Cypress Cloud record key as an environment variable
           CYPRESS_RECORD_KEY:  ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass the GitHub token lets this action correctly
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
