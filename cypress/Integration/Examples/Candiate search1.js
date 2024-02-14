@@ -6,7 +6,7 @@ describe('Validating create mandate functionality',function(){
     it("Testing create new mandate ",async function(){
       
 
-cy.visit("https://web.staging.xpheno.work/login",{failOnStatusCode: false, }) 
+cy.visit("https://artemis.xpheno.work/login",{failOnStatusCode: false, }) 
     //Enter the username in login screen
     cy.get('input[id=":r0\:"]').type('naveenkumar.magesh@impigertech.com',{force:true})
     //Enter the Password in loging
