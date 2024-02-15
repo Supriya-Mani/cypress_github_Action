@@ -21,18 +21,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # because of "record" and "parallel" parameters
-      # these containers will load balance all found tests among themselves
+      # Loop through containers
       - name: Parallel Tests
-        uses: cypress-io/github-action@v4
-
-        with:
-          record: true
-          parallel: true
-          # screenshot: true  
-          group: XpehnoAutomation
-          spec: "cypress/Integration/Examples/Candiate search1.js" # Update this path
-          ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
+        run: |
+          for container in $(seq 1 ${{ matrix.containers }}); do
+            echo "Running container $container"
+            # Execute your Cypress tests here for each container
+            # Example command:
+            # npx cypress run --record --parallel --group XpehnoAutomation --spec "cypress/Integration/Examples/Candiate search1.js" --ci-build-id "${{ github.run_id }}-$container" --env CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }} --env GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          done
           
         env:
           # pass the Cypress Cloud record key as an environment variable
