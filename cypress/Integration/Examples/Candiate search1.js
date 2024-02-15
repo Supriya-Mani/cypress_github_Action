@@ -25,7 +25,7 @@ cy.visit("https://artemis.xpheno.work/login",{failOnStatusCode: false, })
  
  // Function to generate a random keyword
  function generateRandomKeyword() {
-   const keywords = ['java ', 'Testing ', 'node ', 'selenium  '];
+   const keywords = ['java ', 'Testing ', 'node ', 'selenium'];
    const randomIndex = Math.floor(Math.random() * keywords.length);
    return keywords[randomIndex];
  }
