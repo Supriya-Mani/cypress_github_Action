@@ -4,35 +4,51 @@ on: [push]
 
 jobs:
   test:
-    name: Cypress Cloud Tests
+    name: Cypress Cloud Tests - First Iteration
     runs-on: ubuntu-latest
     strategy:
-      # when one test fails, DO NOT cancel the other
-      # containers, because this will kill Cypress processes
-      # leaving Cypress Cloud hanging ...
-      # https://github.com/cypress-io/github-action/issues/48
       fail-fast: false
       matrix:
-        # run 2 copies of the current job in parallel
         containers: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-        #machine: [1,2,3,4]
         
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Loop through containers
       - name: Parallel Tests
-        run: |
-          for container in $(seq 1 ${{ matrix.containers }}); do
-            echo "Running container $container"
-            # Execute your Cypress tests here for each container
-            # Example command:
-            # npx cypress run --record --parallel --group XpehnoAutomation --spec "cypress/Integration/Examples/Candiate search1.js" --ci-build-id "${{ github.run_id }}-$container" --env CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }} --env GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          done
+        uses: cypress-io/github-action@v4
+        with:
+          record: true
+          parallel: true
+          group: XpehnoAutomation
+          spec: "cypress/Integration/Examples/Candiate search1.js"
+          ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
           
         env:
-          # pass the Cypress Cloud record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # pass the GitHub token lets this action correctly
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test_second_iteration:
+    name: Cypress Cloud Tests - Second Iteration
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Parallel Tests (Second Iteration)
+        uses: cypress-io/github-action@v4
+        with:
+          record: true
+          parallel: true
+          group: XpehnoAutomation
+          spec: "cypress/Integration/Examples/Candiate search1.js"
+          ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
+          
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
