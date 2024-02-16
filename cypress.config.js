@@ -19,8 +19,13 @@ module.exports = defineConfig({
   defaultCommandTimeout: 10000,
   execTimeout: 60000,
   uncaughtExceptionCaptureLevel: "off",
-  videoTimeout: 60000,
-  videosFolder: "cypress/videos",
+  videoTimeout: 60000000,
+  
+  screenshot: true,
+  video: true,
+  screenshotsfolder: 'cypress/screenshots',
+  videosfolder: 'cypress/videos',
+  
   env: {
 
     // Set environment variables as needed

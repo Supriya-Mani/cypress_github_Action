@@ -29,10 +29,7 @@ jobs:
         with:
           record: true
           parallel: true
-          screenshot: true
-          video: true
-          screenshots-folder: 'cypress/screenshots' # Custom path for screenshots
-          videos-folder: 'cypress/videos' # Custom path for videos
+          #screenshot: true  
           group: XpehnoAutomation
           spec: "cypress/Integration/Examples/Candiate search1.js" # Update this path
           ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
