@@ -34,9 +34,18 @@ jobs:
           group: XpehnoAutomation
           spec: "cypress/Integration/Examples/Candiate search1.js" # Update this path
           ci-build-id: "${{ github.run_id }}-${{ matrix.containers }}"
-          
+        
+      - name: Reports  
+        uses: actions/upload-artifact@v4
+        with:
+            name: my-mochawesom
+            path: path/to/artifact/ # or path/to/artifact
+
+
         env:
           # pass the Cypress Cloud record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass the GitHub token lets this action correctly
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+     

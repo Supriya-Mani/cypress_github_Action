@@ -42,3 +42,25 @@ Cypress.Commands.add('generateFakeData', (overrides = {}) => {
 
   return { ...defaultData, ...overrides };
 });
+
+// commands.js
+// commands.js
+const { createWorker } = require('tesseract.js');
+
+Cypress.Commands.add('convertImageToText', (imageUrl) => {
+  return new Promise((resolve, reject) => {
+    const worker = createWorker();
+
+    worker.load()
+      .then(() => worker.loadLanguage('eng'))
+      .then(() => worker.initialize('eng'))
+      .then(() => worker.recognize(imageUrl))
+      .then(({ data: { text } }) => {
+        resolve(text.trim()); // Trim whitespace from the extracted text
+      })
+      .catch(reject)
+      .finally(() => worker.terminate());
+  });
+});
+
+

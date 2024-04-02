@@ -27,7 +27,8 @@ module.exports = defineConfig({
   videosfolder: 'cypress/videos',
   
   env: {
-
+    
+    "shell": "powershell.exe"
     // Set environment variables as needed
   },
   e2e: {
