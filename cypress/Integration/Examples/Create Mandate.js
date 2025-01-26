@@ -51,9 +51,9 @@ cy.visit("https://web.qa.xpheno.work/login",{failOnStatusCode: false})
   cy.contains('.MuiAutocomplete-option', randomOption).click({ force: true });
   
 //Click on Contract Reference and type random date
-   const faker = require('faker');
+   const { faker } = require('@faker-js/faker');
 
-   const fakeName = faker.name.firstName(); 
+   const fakeName = faker.person.firstName(); 
 
    cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[1]/div[2]/div/div/div/div/div/div[1]/div[2]/div/div/input')
    .click({force:true}).type(fakeName,{force:true})
@@ -76,7 +76,7 @@ const randomText = Math.random().toString(36).substring(7);
 cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[1]/div[2]/div/div/div/div/div/div[1]/div[4]/div/div/input').type(randomText,{force:true});
 
 //click on recieve date and select random
-const randomDate = faker.date.past(1);
+const randomDate = faker.date.past({ years: 1 });
     const day = String(randomDate.getDate()).padStart(2, '0');
     const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const year = randomDate.getFullYear();
@@ -114,13 +114,13 @@ cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[1]/div[2]/div/div/div/d
  cy.contains(randomName).click()
 //click on jobtitle
 const job=["IoT Solution Architect","DevOps Engineer","Cloud Architect","Block Chain Developer","Big Data Engineer","Artificial Intelligence Engineer","Computer Systems Analyst","Network Engineer","IT Security","Software Developer","Web Developers"]
-const  jobtitle= faker.random.arrayElement(job)
+const  jobtitle= faker.helpers.arrayElement(job)
 
 // Type the random text into the element with the specified ID
 cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]/div/div/input').type(jobtitle);
 
 //click on Job title and select Dropdown
-const randomEmploymentType = faker.random.arrayElement(['Permanent', 'Contractual']);
+const randomEmploymentType = faker.helpers.arrayElement(['Permanent', 'Contractual']);
 
 // Type the random name into the input field
 cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[2]/div[2]/div/div/div/div/div/div[1]/div[2]/div')
@@ -128,7 +128,7 @@ cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[2]/div[2]/div/div/div/d
   cy.contains(randomEmploymentType).click()
 
 //click on priority 
-const priority = faker.random.arrayElement(['High', 'Medium', 'Low']);
+const priority = faker.helpers.arrayElement(['High', 'Medium', 'Low']);
 
 // Click the element that opens the dropdown
 cy.get(':nth-child(3) > .MuiInputBase-root > .MuiSelect-select').click({force:true});
@@ -159,7 +159,7 @@ cy.get(':nth-child(4) > .MuiInputBase-root > .MuiSelect-select')
 tomorrow.setDate(tomorrow.getDate() + 1);
 
 // Use Faker.js to generate a random end date less than 4 years from tomorrow
-const randomEndDate = faker.date.future(4, tomorrow);
+const randomEndDate = faker.date.future({ years: 4, refDate: tomorrow });
 
 const days = String(tomorrow.getDate()).padStart(2, '0');
 const months = String(tomorrow.getMonth() + 1).padStart(2, '0'); // Months are zero-based
@@ -184,7 +184,7 @@ cy.contains('Mandate specs').should('be.visible')*/
 
 //click on job mode and click on job mode
 const jobModes = ['Hybrid', 'Remote', 'WFO', 'WFH'];
-const jobMode = faker.random.arrayElement(jobModes);
+const jobMode = faker.helpers.arrayElement(jobModes);
 
 
 // Click on the element and handle any potential errors
@@ -198,7 +198,7 @@ cy.get(':nth-child(1) > :nth-child(1) > .MuiInputBase-root > .MuiSelect-select')
   })
 //click on shift drodown
 const shiftOptions = ['Regular', 'Night'];
-  const randomShift = faker.random.arrayElement(shiftOptions);
+  const randomShift = faker.helpers.arrayElement(shiftOptions);
   
 cy.get(':nth-child(3) > .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > .MuiAccordion-region > .MuiAccordionDetails-root > .container-wrapper > :nth-child(1) > :nth-child(2) > .MuiInputBase-root > .MuiSelect-select')
 .click({ force: true })
@@ -219,7 +219,7 @@ cy.get('.list-item').find('input[type="checkbox"]').then(checkboxes => {
 
   // Generate an array of 4 unique random indices within the range of checkboxes
   const randomIndices = Array.from({ length: checkboxesToSelect }, () =>
-    faker.datatype.number({ min: 0, max: checkboxes.length - 1 })
+    faker.number.int({ min: 0, max: checkboxes.length - 1 })
   );
 
   // Iterate over the random indices and check the corresponding checkboxes
@@ -233,7 +233,7 @@ cy.get('.list-item').find('input[type="checkbox"]').then(checkboxes => {
 
     // Generate an array of 4 unique random indices within the range of sub-checkboxes
     const randomSubIndices = Array.from({ length: subCheckboxesToSelect }, () =>
-      faker.datatype.number({ min: 0, max: subCheckboxes.length - 1 })
+      faker.number.int({ min: 0, max: subCheckboxes.length - 1 })
     );
 
     // Iterate over the random sub-indices and check the corresponding sub-checkboxes
@@ -256,7 +256,7 @@ cy.get('.list-item').click({force:true}).find('input[type="checkbox"]').then(che
 
   // Generate an array of 4 unique random indices within the range of checkboxes
   const randomIndices = Array.from({ length: checkboxesToSelect }, () =>
-    faker.datatype.number({ min: 0, max: checkboxes.length - 1 })
+    faker.number.int({ min: 0, max: checkboxes.length - 1 })
   );
 
   // Iterate over the random indices and check the corresponding checkboxes
@@ -270,7 +270,7 @@ cy.get('.list-item').click({force:true}).find('input[type="checkbox"]').then(che
 
     // Generate an array of 4 unique random indices within the range of sub-checkboxes
     const randomSubIndices = Array.from({ length: subCheckboxesToSelect }, () =>
-      faker.datatype.number({ min: 0, max: subCheckboxes.length - 1 })
+      faker.number.int({ min: 0, max: subCheckboxes.length - 1 })
     );
 
     // Iterate over the random sub-indices and check the corresponding sub-checkboxes
@@ -287,7 +287,7 @@ cy.wait(500)
 
   //click on qualification and enter the values
   const qualificationOptions = ['Bachelor\'s Degree', 'Master\'s Degree', 'PhD', 'Diploma', 'High School Diploma'];
-  const randomQualification = faker.random.arrayElement(qualificationOptions)
+  const randomQualification = faker.helpers.arrayElement(qualificationOptions)
   cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[2]/div[1]/div/div/textarea[1]')
   .click({force:true}).type(randomQualification,{force:true})
 
@@ -307,8 +307,8 @@ const maxStartValue = 30;
 const minEndValue = 0;
 const maxEndValue = 30;
 
-const startValue = faker.random.number({ min: minStartValue, max: maxStartValue });
-const endValue = faker.random.number({ min: minEndValue, max: maxEndValue });
+const startValue = faker.number.int({ min: minStartValue, max: maxStartValue });
+const endValue = faker.number.int({ min: minEndValue, max: maxEndValue });
 
 // Interaction with the first slider
 interactWithSlider('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[1]/div/div/div[1]/div/div/div/div/button[2]/span', startValue);
@@ -338,8 +338,8 @@ function interactWithCTCInput(xpath, endCTC) {
 }
 
 // Generate random start and end CTC values
-const startCTC = faker.random.number({ min: 0, max: 100 });
-const endCTC = faker.random.number({ min: startCTC, max: 100 });
+const startCTC = faker.number.int({ min: 0, max: 100 });
+const endCTC = faker.number.int({ min: startCTC, max: 100 });
 
 // Interaction with the first CTC input field
 interactWithCTCInput('/html/body/div[1]/div[4]/div/main/div/form/div[3]/div[2]/div/div/div/div/div/div[3]/div[2]/div[2]/div/div[1]/div/div/div/input', endCTC);
@@ -363,7 +363,7 @@ cy.get(':nth-child(1) > [style="height: 100%; border: 1px solid rgb(217, 217, 21
 .click({force:true}).type(jobDescription,{force:true})
 
 //click on Remarks
-const Remark = faker.random.words()
+const Remark = faker.word.words()
 cy.get(':nth-child(2) > [style="height: 100%; border: 1px solid rgb(217, 217, 217); border-radius: 10px;"] > .quill > .ql-container > .ql-editor')
 .click({force:true}).type(Remark,{force:true})
 
@@ -402,7 +402,7 @@ const Primarydropdown= [
 'Tada',
 'Razole',
 'Kamalapuram']
-const randomprimary = faker.random.arrayElement(Primarydropdown)
+const randomprimary = faker.helpers.arrayElement(Primarydropdown)
   // Create an option with the generated word and select it
   cy.get(dropdownSelector).type(randomprimary,{force:true}).click({force:true});
 
@@ -422,7 +422,7 @@ cy.get(`label:contains('${secondaryLocation}')`)
   cy.get('body').click({force:true})
 
   //click on job order and enter the values
-const Joborder=faker.random.number({ min: 1, max: 100 });
+const Joborder=faker.number.int({ min: 1, max: 100 });
 cy.xpath('/html/body/div[5]/form/div[2]/div[1]/div[3]/div/div/input').type(Joborder,{force:true})
 
 //Annual CTc
@@ -436,8 +436,8 @@ const minEndValue = 0 * lakh;
 const maxEndValue = 100 * lakh;
 
 // Get random start and end values within the specified ranges
-const startValue = faker.random.number({ min: minStartValue, max: maxStartValue });
-const endValue = faker.random.number({ min: minEndValue, max: maxEndValue });
+const startValue = faker.number.int({ min: minStartValue, max: maxStartValue });
+const endValue = faker.number.int({ min: minEndValue, max: maxEndValue });
 
 // Interaction with the first slider
 cy.get(':nth-child(2) > .MuiGrid-root > .mandate-slider > .select-container > :nth-child(1) > .MuiInputBase-root > .MuiSelect-select')
@@ -456,7 +456,7 @@ cy.get(':nth-child(2) > .MuiGrid-root > .mandate-slider > .select-container > :n
   });*/
 
 //click on client SPOC
-const username = faker.internet.userName();
+const username = faker.internet.username();
 
 
 cy.xpath('/html/body/div[5]/form/div[2]/div[5]/div[1]/div/div/input').click({force:true})
@@ -468,7 +468,7 @@ cy.xpath('/html/body/div[5]/form/div[2]/div[5]/div[2]/div/div/input').click({for
 .type(email)
 //click on add client spoc button
 cy.xpath('/html/body/div[5]/form/div[2]/div[6]/button').click({force:true})
-const usernames=faker.internet.userName()
+const usernames=faker.internet.username()
 cy.xpath('/html/body/div[5]/form/div[2]/div[6]/div[1]/div/div/input').click({force:true})
 .type(usernames)
 const emails= faker.internet.email()
@@ -483,13 +483,13 @@ cy.contains('Fixed Percentage').click()
  const minCTC = 50000;
   const maxCTC = 1500000;
 
-  const randomCTC = faker.random.number({ min: minCTC, max: maxCTC });
+  const randomCTC = faker.number.int({ min: minCTC, max: maxCTC });
   cy.xpath('//span[text()="CTC per Annum"]//parent::legend//parent::fieldset//parent::div//input')
 .click({force:true})
   .type(randomCTC)
 
   //click on percentage
-  const randomPercentage = faker.datatype.number({ min: 1, max: 10 });
+  const randomPercentage = faker.number.int({ min: 1, max: 10 });
   cy.xpath('//span[text()="Percentage(%)"]//parent::legend//parent::fieldset//parent::div//input').click({force:true})
   .type(randomPercentage)
 //click on add button
@@ -501,7 +501,7 @@ cy.contains('Fixed Percentage').click()
   .click({force:true}).type(success,{force:true})
 
   //click on success factor
-  const successfactor=faker.random.word();
+  const successfactor=faker.word.sample();
   cy.xpath('/html/body/div[1]/div[4]/div/main/div/form/div[5]/div[2]/div/div/div/div/div/div/div[2]/div/div/textarea[1]' )
 .click({force:true}).type(successfactor)
 //upload file in cypress

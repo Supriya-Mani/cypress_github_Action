@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-xpath';
 
-const faker = require('faker');
+const { faker } = require('@faker-js/faker');
 
 Cypress.Commands.add('login', (username, password) => {
   // Your login implementation here
@@ -35,7 +35,7 @@ Cypress.Commands.add('login', (username, password) => {
 Cypress.Commands.add('generateFakeData', (overrides = {}) => {
   const defaultData = {
     // Define your default data here using Faker.js
-    name: faker.name.findName(),
+    name: faker.person.fullName(),
     email: faker.internet.email(),
     // ... add more fields as needed
   };

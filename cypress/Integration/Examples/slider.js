@@ -21,7 +21,7 @@ cy.visit("https://web.staging.xpheno.work/login",{failOnStatusCode: false, })
    cy.contains("New Mandate").should('be.visible')
 
 
-   const faker = require('faker');
+   const { faker } = require('@faker-js/faker');
 
   //click on Annual CTC
   const minStartValue = 0 
@@ -31,8 +31,8 @@ cy.visit("https://web.staging.xpheno.work/login",{failOnStatusCode: false, })
   const maxEndValue = 100 
   
   // Get random start and end values within the specified ranges
-  const startValue = faker.random.number({ min: minStartValue, max: maxStartValue });
-  const endValue = faker.random.number({ min: minEndValue, max: maxEndValue });
+  const startValue = faker.number.int({ min: minStartValue, max: maxStartValue });
+  const endValue = faker.number.int({ min: minEndValue, max: maxEndValue });
   
   // Function to interact with the slider
   function interactWithSlider(selector, value) {
